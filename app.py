@@ -586,7 +586,6 @@ if LOGO_SRC:
   </div>
   <div class="brand-meta">
     <span class="status"><span class="dot"></span><span>Available · Q2 2026</span></span>
-    <a class="header-cta" href="#contact">Book a call →</a>
     <a class="header-cta" href="https://calendly.com/hello-aditya-analytics/30min" target="_blank">Book a call →</a>
   </div>
 </div>
