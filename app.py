@@ -587,6 +587,7 @@ if LOGO_SRC:
   <div class="brand-meta">
     <span class="status"><span class="dot"></span><span>Available · Q2 2026</span></span>
     <a class="header-cta" href="#contact">Book a call →</a>
+    <a class="header-cta" href="https://calendly.com/hello-aditya-analytics/30min" target="_blank">Book a call →</a>
   </div>
 </div>
 """,
@@ -606,7 +607,7 @@ st.markdown(
           forecasting and AI — so decisions get faster, sharper, and more confident.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book a free diagnostic →</a>
+          <a class="btn btn-primary" href="https://calendly.com/hello-aditya-analytics/30min">Book a free diagnostic →</a>
           <a class="btn btn-ghost" href="#services">Explore services</a>
         </div>
       </div>
@@ -930,7 +931,7 @@ with tabs[4]:
                 else:
                     st.success(
                         f"Thanks, {name.split()[0] if name else 'there'}! Your request is recorded. "
-                        "We’ll get back within 1 business day."
+                        "We’ll get back within 2-3 business working days."
                     )
 
     with f2:
@@ -946,7 +947,7 @@ with tabs[4]:
   <p class="small" style="margin:8px 0;"><strong style="color:var(--ink);">📍 Location</strong><br/>
   <span class="muted">India · Remote-first, global delivery</span></p>
   <p class="small" style="margin:8px 0;"><strong style="color:var(--ink);">⏱ Response time</strong><br/>
-  <span class="muted">Within 1 business day</span></p>
+  <span class="muted">Within 2-3 business working days</span></p>
 </div>
 """,
             unsafe_allow_html=True,
