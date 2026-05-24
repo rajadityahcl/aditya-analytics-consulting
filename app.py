@@ -534,10 +534,10 @@ with st.sidebar:
             f"""
 <div class="sidebar-logo">
   <img src="{ICON_SRC}" alt="Aditya Analytics mark"/>
-  #<div class="brand-text">
-    #<span class="brand-name">Aditya</span>
-    #<span class="brand-sub">Analytics Consulting</span>
-  #</div>
+  <div class="brand-text">
+    <span class="brand-name">Aditya</span>
+    <span class="brand-sub">Analytics Consulting</span>
+  </div>
 </div>
 """,
             unsafe_allow_html=True,
@@ -545,41 +545,16 @@ with st.sidebar:
     else:
         st.markdown("### Aditya Analytics")
 
-   #st.markdown('<div class="sidebar-nav-title">Navigation</div>', unsafe_allow_html=True)
-    #st.markdown(
-       # """
-#- **Home** — Overview
-#- **Services** — What we deliver
-#- **Pricing** — Transparent tiers
-#- **About** — Our approach
-#- **Contact** — Book a session 
-#"""
-    #)
-
-
     st.markdown('<div class="sidebar-nav-title">Navigation</div>', unsafe_allow_html=True)
-
-    nav_items = [
-        ("Home", "Overview", "🏠  Home"),
-        ("Services", "What we deliver", "🧰  Services"),
-        ("Pricing", "Transparent tiers", "💼  Pricing"),
-        ("About", "Our approach", "ℹ️  About"),
-        ("Contact", "Book a session", "✉️  Contact"),
-    ]
-
-    if "top_nav_radio" not in st.session_state:
-        st.session_state.top_nav_radio = "🏠  Home"
-
-    for page_name, page_desc, radio_label in nav_items:
-        is_active = st.session_state.top_nav_radio == radio_label
-        if st.button(
-            f"{page_name} — {page_desc}",
-            key=f"nav_{page_name}",
-            use_container_width=True,
-            type="primary" if is_active else "secondary",
-        ):
-            st.session_state.top_nav_radio = radio_label
-            st.rerun()
+    st.markdown(
+       """
+- **Home** — Overview
+- **Services** — What we deliver
+- **Pricing** — Transparent tiers
+- **About** — Our approach
+- **Contact** — Book a session 
+"""
+    )
 
     st.markdown('<div class="sidebar-nav-title" style="margin-top:22px;">Get in touch</div>', unsafe_allow_html=True)
     st.markdown(
