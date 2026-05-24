@@ -657,26 +657,7 @@ st.markdown(
 )
 
 # ---------- Tabs ----------
-#tabs = st.tabs(["🏠  Home", "🧰  Services", "💼  Pricing", "ℹ️  About", "✉️  Contact"])
-
-PAGE_LABELS = {
-    "Home": "🏠  Home",
-    "Services": "🧰  Services",
-    "Pricing": "💼  Pricing",
-    "About": "ℹ️  About",
-    "Contact": "✉️  Contact",
-}
-PAGE_ORDER = list(PAGE_LABELS.keys())
-
-selected_label = st.radio(
-    "Section",
-    options=[PAGE_LABELS[p] for p in PAGE_ORDER],
-    horizontal=True,
-    label_visibility="collapsed",
-    key="top_nav_radio",
-)
-
-active_page = next(p for p, lbl in PAGE_LABELS.items() if lbl == selected_label)
+tabs = st.tabs(["🏠  Home", "🧰  Services", "💼  Pricing", "ℹ️  About", "✉️  Contact"])
 
 # ===== HOME =====
 with tabs[0]:
