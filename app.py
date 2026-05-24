@@ -19,7 +19,7 @@ def _find_asset(filename: str) -> Path | None:
     return None
 
 LOGO_PATH = _find_asset("aditya_analytics_logo.png")
-ICON_PATH = _find_asset("aditya_icon.png")
+ICON_PATH = _find_asset("aditya_analytics_logo.png")
 
 def get_base64_image(image_path: Path | None) -> str:
     if not image_path or not image_path.is_file():
