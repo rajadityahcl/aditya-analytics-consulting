@@ -19,7 +19,7 @@ def _find_asset(filename: str) -> Path | None:
     return None
 
 LOGO_PATH = _find_asset("aditya_analytics_logo.png")
-ICON_PATH = _find_asset("aditya_analytics_logo.png")
+ICON_PATH = _find_asset("aditya_icon.png")
 
 def get_base64_image(image_path: Path | None) -> str:
     if not image_path or not image_path.is_file():
@@ -534,10 +534,10 @@ with st.sidebar:
             f"""
 <div class="sidebar-logo">
   <img src="{ICON_SRC}" alt="Aditya Analytics mark"/>
-  <div class="brand-text">
-    <span class="brand-name">Aditya</span>
-    <span class="brand-sub">Analytics Consulting</span>
-  </div>
+  #<div class="brand-text">
+    #<span class="brand-name">Aditya</span>
+    #<span class="brand-sub">Analytics Consulting</span>
+  #</div>
 </div>
 """,
             unsafe_allow_html=True,
@@ -545,16 +545,41 @@ with st.sidebar:
     else:
         st.markdown("### Aditya Analytics")
 
+   #st.markdown('<div class="sidebar-nav-title">Navigation</div>', unsafe_allow_html=True)
+    #st.markdown(
+       # """
+#- **Home** — Overview
+#- **Services** — What we deliver
+#- **Pricing** — Transparent tiers
+#- **About** — Our approach
+#- **Contact** — Book a session 
+#"""
+    #)
+
+
     st.markdown('<div class="sidebar-nav-title">Navigation</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-- **Home** — Overview
-- **Services** — What we deliver
-- **Pricing** — Transparent tiers
-- **About** — Our approach
-- **Contact** — Book a session
-"""
-    )
+
+    nav_items = [
+        ("Home", "Overview", "🏠  Home"),
+        ("Services", "What we deliver", "🧰  Services"),
+        ("Pricing", "Transparent tiers", "💼  Pricing"),
+        ("About", "Our approach", "ℹ️  About"),
+        ("Contact", "Book a session", "✉️  Contact"),
+    ]
+
+    if "top_nav_radio" not in st.session_state:
+        st.session_state.top_nav_radio = "🏠  Home"
+
+    for page_name, page_desc, radio_label in nav_items:
+        is_active = st.session_state.top_nav_radio == radio_label
+        if st.button(
+            f"{page_name} — {page_desc}",
+            key=f"nav_{page_name}",
+            use_container_width=True,
+            type="primary" if is_active else "secondary",
+        ):
+            st.session_state.top_nav_radio = radio_label
+            st.rerun()
 
     st.markdown('<div class="sidebar-nav-title" style="margin-top:22px;">Get in touch</div>', unsafe_allow_html=True)
     st.markdown(
@@ -632,7 +657,26 @@ st.markdown(
 )
 
 # ---------- Tabs ----------
-tabs = st.tabs(["🏠  Home", "🧰  Services", "💼  Pricing", "ℹ️  About", "✉️  Contact"])
+#tabs = st.tabs(["🏠  Home", "🧰  Services", "💼  Pricing", "ℹ️  About", "✉️  Contact"])
+
+PAGE_LABELS = {
+    "Home": "🏠  Home",
+    "Services": "🧰  Services",
+    "Pricing": "💼  Pricing",
+    "About": "ℹ️  About",
+    "Contact": "✉️  Contact",
+}
+PAGE_ORDER = list(PAGE_LABELS.keys())
+
+selected_label = st.radio(
+    "Section",
+    options=[PAGE_LABELS[p] for p in PAGE_ORDER],
+    horizontal=True,
+    label_visibility="collapsed",
+    key="top_nav_radio",
+)
+
+active_page = next(p for p, lbl in PAGE_LABELS.items() if lbl == selected_label)
 
 # ===== HOME =====
 with tabs[0]:
